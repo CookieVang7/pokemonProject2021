@@ -26,9 +26,10 @@
             <label for="rival-name"><b>Rival's name:</b></label>
             <input type="text" id="rival" />
         </div>
+
         <div class="infocard-list infocard-list">
             <h2>Choose a Pokemon</h2>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"> <button class="grass" id="bulbasaur">Bulbasaur</button>
+            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"> <button class="grass" onclick="confirm()" id="bulbasaur">Bulbasaur</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/002.png" alt="Ivysaur icon"> <button class="grass" id="ivysaur">Ivysaur</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/003.png" alt="Venusaur icon"> <button class="grass" id="venusaur">Venusaur</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/004.png" alt="Charmander icon"> <button class="fire" id="charmander">Charmander</button>
@@ -37,12 +38,90 @@
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/007.png" alt="Squirtle icon"> <button class="water" id="squirtle">Squirtle</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/008.png" alt="Wartortle icon"> <button class="water" id="wartortle">Wartortle</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/009.png" alt="Blastoise icon"> <button class="water" id="blastoise">Blastoise</button>
+            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/010.png" alt="Caterpie icon"> <button class="bug" id="caterpie">Caterpie</button>
+            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/011.png" alt="Metapod icon"> <button class="bug" id="metapod">Metapod</button>
+            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/012.png" alt="Butterfree icon"> <button class="bug" id="butterfree">Butterfree</button>
         </div>
+
+        <!--What the selection screens of a Pokemon will look like-->
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+            
+            /* The confirmation screen when you choose a Pokemon */
+            .form-popup {
+              display: none;
+              position:absolute;
+              top:35%;
+              left:50%;
+              width:400px;  
+              height:400px;   
+              margin-left:-200px;   
+              margin-top:-200px;
+            }
+            
+            /* Add styles to the form container */
+            .confirm-container {
+              max-width: 300px;
+              padding: 10px;
+              background-color: white;
+            }
+            
+            /* Style of selection button */
+            .confirm-container .btn {
+              background-color: #04AA6D;
+              color: white;
+              padding: 16px 20px;
+              border: none;
+              cursor: pointer;
+              width: 100%;
+              margin-bottom:10px;
+              opacity: 0.8;
+            }
+            
+            /* Add a red background color to the cancel button */
+            .confirm-container .cancel {
+              background-color: red;
+            }
+            
+            /* Add some hover effects to buttons */
+            .confirm-container .btn:hover, .open-button:hover {
+              opacity: 1;
+            }
+            </style>
+
+        <div class="form-popup" id="bulbasaurConfirm">
+          <!-- <form action="/action_page.php" class="form-container"> -->
+          <form class="confirm-container">
+          <h1>Bulbasaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"></h1>
+          <h2>Moves:</h2>
+          <ul>
+            <li>Tackle</li>
+            <li>Vine Whip</li>
+            <li>Stun Spore</li>
+            <li>Razor Leaf</li>
+          </ul>
+          <h2>Stats:</h2>
+          <h3>Level: 20<br>HP: 45<br>Attack: 49<br>Defense: 49<br>Special Attack: 65<br>Special Defense: 65<br>Speed: 49</h3>
+          <button type="button" class="btn">Choose this Pokemon!</button>
+          <button type="button" class="btn cancel" onclick="cancel()">Close</button>
+          </form>
+        </div>
+
+        <script>
+          function confirm() {
+            document.getElementById("bulbasaurConfirm").style.display = "block";
+          }
+
+          function cancel() {
+            document.getElementById("bulbasaurConfirm").style.display = "none";
+          }
+        </script>
 
         <script>
             //Using a for loop to change the color and background color of the buttons based on the pokemon's type
             for (let i=0; i<document.getElementsByClassName("grass").length; i++){
-                document.getElementsByClassName("grass")[i].style.backgroundColor='#4CAF50';
+                document.getElementsByClassName("grass")[i].style.backgroundColor='#32CD32';
                 document.getElementsByClassName("grass")[i].style.color='#F5FFFA'; 
             }         
             for (let i=0; i<document.getElementsByClassName("fire").length; i++){
@@ -52,13 +131,20 @@
             for (let i=0; i<document.getElementsByClassName("water").length; i++){
                 document.getElementsByClassName("water")[i].style.backgroundColor='#1E90FF';
                 document.getElementsByClassName("water")[i].style.color='#F5FFFA'; 
+            }
+            for (let i=0; i<document.getElementsByClassName("bug").length; i++){
+                document.getElementsByClassName("bug")[i].style.backgroundColor='#6B8C23';
+                document.getElementsByClassName("bug")[i].style.color='#F5FFFA';
             } 
         </script>
+
         <script>
             /*Adding PeachPuff background color 
             Referenced https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_style_backgroundimage*/
             document.body.style.backgroundColor = "#FFDAB9"; 
-          </script>
+        </script>
+
+        <script src="pokedex.js"></script>
     </body>
 </html>
 
