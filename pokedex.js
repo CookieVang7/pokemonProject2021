@@ -43,6 +43,10 @@ let twinneedle = {type:"bug", power:"25", accuracy:"1", pp:"20", effect:".2"};
 let silverWind = {type:"bug", power:"60", accuracy:"1", pp:"5", effect:".1"};
 
 function getPokemonInfo(pokemon){
-    return pokemon.name,pokemon.type1,pokemon.type2,pokemon.level,pokemon.hp,pokemon.attack,pokemon.defense,pokemon.specAtk,pokemon.specDef,pokemon.speed,pokemon.moves;
+    return pokemon;
+}
+
+function getHP(pokemon){
+    alert(pokemon.hp);
 }
 

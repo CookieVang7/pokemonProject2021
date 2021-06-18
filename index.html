@@ -30,7 +30,7 @@
 
         <div class="infocard-list infocard-list">
             <h2>Choose a Pokemon!</h2>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"> <button class="grass" onclick="confirmBulbasaur(),getPokemonInfo(bulbasaur)" id="bulbasaur">Bulbasaur</button>
+            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"> <button class="grass" onclick="confirmBulbasaur(),getHP(bulbasaur)" id="bulbasaur">Bulbasaur</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/002.png" alt="Ivysaur icon"> <button class="grass" onclick="confirmIvysaur()" id="ivysaur">Ivysaur</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/003.png" alt="Venusaur icon"> <button class="grass" id="venusaur">Venusaur</button>
             <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/004.png" alt="Charmander icon"> <button class="fire" id="charmander">Charmander</button>
@@ -181,53 +181,6 @@
             <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/151.png' alt='Mew icon'> <button class='psychic' id='mew'>Mew</button>
         </div>
 
-        <!--What the selection screens of a Pokemon will look like-->
-        <style>
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box;}
-            
-            /* The confirmation screen when you choose a Pokemon */
-            .form-popup {
-              display: none;
-              position:absolute;
-              top:35%;
-              left:50%;
-              width:400px;  
-              height:400px;   
-              margin-left:-200px;   
-              margin-top:-200px;
-            }
-            
-            /* Add styles to the form container */
-            .confirm-container {
-              max-width: 300px;
-              padding: 10px;
-              background-color: white;
-            }
-            
-            /* Style of selection button */
-            .confirm-container .btn {
-              background-color: #04AA6D;
-              color: white;
-              padding: 16px 20px;
-              border: none;
-              cursor: pointer;
-              width: 100%;
-              margin-bottom:10px;
-              opacity: 0.8;
-            }
-            
-            /* Add a red background color to the cancel button */
-            .confirm-container .cancel {
-              background-color: red;
-            }
-            
-            /* Add some hover effects to buttons */
-            .confirm-container .btn:hover, .open-button:hover {
-              opacity: 1;
-            }
-            </style>
-
         <div class="form-popup" id="bulbasaurConfirm">
           <form class="confirm-container">
           <h1>Bulbasaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"></h1>
@@ -241,32 +194,7 @@
           <h2>Stats:</h2>
           <h3>Level: 20<br>HP: 45<br>Attack: 49<br>Defense: 49<br>Special Attack: 65<br>Special Defense: 65<br>Speed: 49</h3>
           <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelBulbasaur()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmBulbasaur() {
-            document.getElementById("bulbasaurConfirm").style.display = "block";
-          }
-          function cancelBulbasaur() {
-            document.getElementById("bulbasaurConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="bulbasaurConfirm">
-          <form class="confirm-container">
-          <h1>Bulbasaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"></h1>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Tackle</li>
-            <li>Vine Whip</li>
-            <li>Stun Spore</li>
-            <li>Razor Leaf</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 20<br>HP: 45<br>Attack: 49<br>Defense: 49<br>Special Attack: 65<br>Special Defense: 65<br>Speed: 49</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelBulbasaur()">Close</button>
+          <button type="button" class="btn cancel" onclick="cancel()">Close</button>
           </form>
         </div>
         <script>
@@ -292,7 +220,7 @@
   <h2>Stats:</h2>
   <h3>Level: 30<br>HP: 60<br>Attack: 62<br>Defense: 63<br>Special Attack: 80<br>Special Defense: 80<br>Speed: 60</h3>
   <button type="button" class="btn">Choose this Pokemon!</button>
-  <button type="button" class="btn cancel" onclick="cancelIvysaur()">Close</button>
+  <button type="button" class="btn cancel" onclick="cancel()">Close</button>
   </form>
 </div>
 <script>
@@ -305,6 +233,14 @@
 </script>
 
         <script src="pokedex.js"></script>
+        <script>
+          function cancel(){
+            //document.getElementsByClassName("confirm-container")[0].style.display = "none";
+            document.getElementsByClassName("confirm-container").forEach(element => {
+              element.style.display = "none";
+            });
+          }
+        </script>
     </body>
 </html>
 
