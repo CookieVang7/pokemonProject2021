@@ -50,3 +50,34 @@ function getHP(pokemon){
     alert(pokemon.hp);
 }
 
+function getName(pokemon){
+    return pokemon.name;
+}
+
+function getLevel(pokemon){
+return pokemon.level;
+}
+
+function getHealth(pokemon){
+return pokemon.hp;
+}
+
+function getAttack(pokemon){
+    return pokemon.attack;
+}
+
+function getDefense(pokemon){
+return pokemon.defense;
+}
+
+function getSpecialAttack(pokemon){
+return pokemon.specAtk;
+}
+
+function getSpecialDefense(pokemon){
+return pokemon.specDef;
+}
+
+function getSpeed(pokemon){
+return pokemon.speed;
+}
