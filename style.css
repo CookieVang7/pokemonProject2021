@@ -117,3 +117,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
     opacity: 1;
 }
             
+#ivysaurStats {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15pt;
+    font-weight: bold;
+}

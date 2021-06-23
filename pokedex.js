@@ -83,7 +83,7 @@ return pokemon.speed;
 }
 
 function getStats(pokemon){
-    
+
     var level = getLevel(pokemon);
     var health = getHealth(pokemon);
     var attack = getAttack(pokemon);
@@ -93,12 +93,12 @@ function getStats(pokemon){
     var speed = getSpeed(pokemon);
 
     var str = 
-        "Level: " + level + "\n" +
-        "Health: " + health + "\n" +
-        "Attack: " + attack + "\n" +
-        "Defense: " + defense + "\n" +
-        "Special Attack: " + specialAttack + "\n" +
-        "Special Defense: " + specialDefense + "\n" +
+        "Level: " + level + "<br>" +
+        "Health: " + health + "<br>" +
+        "Attack: " + attack + "<br>" +
+        "Defense: " + defense + "<br>" +
+        "Special Attack: " + specialAttack + "<br>" +
+        "Special Defense: " + specialDefense + "<br>" +
         "Speed: " + speed;
 
     return str;
