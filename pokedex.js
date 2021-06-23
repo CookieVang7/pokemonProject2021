@@ -81,3 +81,25 @@ return pokemon.specDef;
 function getSpeed(pokemon){
 return pokemon.speed;
 }
+
+function getStats(pokemon){
+    
+    var level = getLevel(pokemon);
+    var health = getHealth(pokemon);
+    var attack = getAttack(pokemon);
+    var defense = getDefense(pokemon);
+    var specialAttack = getSpecialAttack(pokemon);
+    var specialDefense = getSpecialDefense(pokemon);
+    var speed = getSpeed(pokemon);
+
+    var str = 
+        "Level: " + level + "\n" +
+        "Health: " + health + "\n" +
+        "Attack: " + attack + "\n" +
+        "Defense: " + defense + "\n" +
+        "Special Attack: " + specialAttack + "\n" +
+        "Special Defense: " + specialDefense + "\n" +
+        "Speed: " + speed;
+
+    return str;
+}
