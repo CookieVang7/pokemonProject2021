@@ -1,579 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-    <!--The "meta" tag stands for metadata that tells what encoding the document is in. It's in utf-8 which is unicode. The Unicode
+
+<head>
+  <!--The "meta" tag stands for metadata that tells what encoding the document is in. It's in utf-8 which is unicode. The Unicode
     standard means there is a unique number to be interpreted for every character, no matter the platform
     device, or application. It's been adopted by all modern software providers and allows data to be transported
     easily. UTF-8 is an encoding system for Unicode, it can translate any Unicode character to a unique binary string
     and can translate any binary string back to a Unicode character-->
-    <meta charset="utf-8" /> 
-    <!--The "title" tag is the name of the page-->
-    <title>PokemonSummerProject</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="style.css">
-    </head>
+  <meta charset="utf-8" />
+  <script type="text/javascript" src="jquery.1.9.1.js"></script>    
+  <script type = "text/javascript" src="pokedex.js"></script>
+  <!--The "title" tag is the name of the page-->
+  <title>PokemonSummerProject</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    <body>
-        <h1>Pokemon Battle</h1>
-        <div>
-            <p>Hello there! Glad to meet you and welcome to the world of Pokemon! My name is Professor Cookie. If you've never had a 
-                Pokemon battle before, click this <a href="https://www.youtube.com/watch?v=9po3-C8J9uY"> link</a> to watch a tutorial. 
-                Now let's get started!
-            </p>
-      
-            <label for="trainer-name"><b>Your name:</b></label>
-            <input type="text" id="trainer" />
+<body>
+  <h1>Pokemon Battle</h1>
+  <div>
+    <p>Hello there! Glad to meet you and welcome to the world of Pokemon! My name is Professor Cookie. If you've never
+      had a
+      Pokemon battle before, click this <a href="https://www.youtube.com/watch?v=9po3-C8J9uY"> link</a> to watch a
+      tutorial.
+      Now let's get started!
+    </p>
 
-            <label for="rival-name"><b>Rival's name:</b></label>
-            <input type="text" id="rival" />
-        </div>
+    <label for="trainer-name"><b>Your name:</b></label>
+    <input type="text" id="trainer" />
 
-        <div class="infocard-list infocard-list">
-            <h2>Choose a Pokemon!</h2>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"> <button class="grass" onclick="confirmBulbasaur()" id="bulbasaur">Bulbasaur</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/002.png" alt="Ivysaur icon"> <button class="grass" onclick="confirmIvysaur()" id="ivysaur">Ivysaur</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/003.png" alt="Venusaur icon"> <button class="grass" onclick="confirmVenusaur()" id="venusaur">Venusaur</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/004.png" alt="Charmander icon"> <button class="fire" onclick="confirmCharmander()" id="charmander">Charmander</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/005.png" alt="Charmeleon icon"> <button class="fire" onclick="confirmCharmeleon()" id="charmeleon">Charmeleon</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/006.png" alt="Charizard icon"> <button class="fire" onclick="confirmCharizard()" id="charizard">Charizard</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/007.png" alt="Squirtle icon"> <button class="water" onclick="confirmSquirtle()" id="squirtle">Squirtle</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/008.png" alt="Wartortle icon"> <button class="water" onclick="confirmWartortle()" id="wartortle">Wartortle</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/009.png" alt="Blastoise icon"> <button class="water" onclick="confirmBlastoise()" id="blastoise">Blastoise</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/010.png" alt="Caterpie icon"> <button class="bug" onclick="confirmCaterpie()" id="caterpie">Caterpie</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/011.png" alt="Metapod icon"> <button class="bug" onclick="confirmMetapod()" id="metapod">Metapod</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/012.png" alt="Butterfree icon"> <button class="bug" onclick="confirmButterfree()" id="butterfree">Butterfree</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/013.png" alt="Weedle icon"> <button class="bug" onclick="confirmWeedle()" id="weedle">Weedle</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/014.png" alt="Kakuna icon"> <button class="bug" onclick="confirmKakuna()" id="kakuna">Kakuna</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/015.png" alt="Beedrill icon"> <button class="bug" onclick="confirmBeedrill()" id="beedrill">Beedrill</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/016.png" alt="Pidgey icon"> <button class="normal" id="pidgey">Pidgey</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/017.png" alt="Pidgeotto icon"> <button class="normal" id="pidgeotto">Pidgeotto</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/018.png" alt="Pidgeot icon"> <button class="normal" id="pidgeot">Pidgeot</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/019.png" alt="Rattata icon"> <button class="normal" id="rattata">Rattata</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/020.png" alt="Raticate icon"> <button class="normal" id="raticate">Raticate</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/021.png" alt="Spearow icon"> <button class="normal" id="spearow">Spearow</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/022.png" alt="Fearow icon"> <button class="normal" id="fearow">Fearow</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/023.png" alt="Ekans icon"> <button class="poison" id="ekans">Ekans</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/024.png" alt="Arbok icon"> <button class="poison" id="arbok">Arbok</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/025.png" alt="Pikachu icon"> <button class="electric" id="pikachu">Pikachu</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/026.png" alt="Raichu icon"> <button class="electric" id="raichu">Raichu</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/027.png" alt="Sandshrew icon"> <button class="ground" id="sandshrew">Sandshrew</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/028.png" alt="Sandslash icon"> <button class="ground" id="sandslash">Sandslash</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/029.png" alt="NidoranF icon"> <button class="poison" id="nidoranf">Nidoran (F)</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/030.png" alt="Nidorina icon"> <button class="poison" id="nidorina">Nidorina</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/031.png" alt="Nidoqueen icon"> <button class="poison" id="nidoqueen">Nidoqueen</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/032.png" alt="NidoranM icon"> <button class="poison" id="nidoranm">Nidoran (M)</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/033.png" alt="Nidorino icon"> <button class="poison" id="nidorino">Nidorino</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/034.png" alt="Nidoking icon"> <button class="poison" id="nidoking">Nidoking</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/035.png" alt="Clefairy icon"> <button class="normal" id="clefairy">Clefairy</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/036.png" alt="Clefable icon"> <button class="normal" id="clefable">Clefable</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/037.png" alt="Vulpix icon"> <button class="fire" id="vulpix">Vulpix</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/038.png" alt="Ninetales icon"> <button class="fire" id="ninetales">Ninetales</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/039.png" alt="Jigglypuff icon"> <button class="normal" id="jigglypuff">Jigglypuff</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/040.png" alt="Wigglytuff icon"> <button class="normal" id="wigglytuff">Wigglytuff</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/041.png" alt="Zubat icon"> <button class="poison" id="zubat">Zubat</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/042.png" alt="Golbat icon"> <button class="poison" id="golbat">Golbat</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/043.png" alt="Oddish icon"> <button class="grass" id="oddish">Oddish</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/044.png" alt="Gloom icon"> <button class="grass" id="gloom">Gloom</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/047.png" alt="Parasect icon"> <button class="bug" id="parasect">Parasect</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/048.png" alt="Venonat icon"> <button class="bug" id="venonat">Venonat</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/049.png" alt="Venomoth icon"> <button class="bug" id="venomoth">Venomoth</button>
-            <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/050.png" alt="Diglett icon"> <button class="ground" id="diglett">Diglett</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/051.png' alt='Dugtrio icon'> <button class='ground' id='dugtrio'>Dugtrio</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/052.png' alt='Meowth icon'> <button class='normal' id='meowth'>Meoth</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/053.png' alt='Persian icon'> <button class='normal' id='persian'>Persian</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/054.png' alt='Psyduck icon'> <button class='water' id='psyduck'>Psyduck</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/055.png' alt='Golduck icon'> <button class='water' id='golduck'>Golduck</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/056.png' alt='Mankey icon'> <button class='fighting' id='mankey'>Mankey</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/057.png' alt='Primeape icon'> <button class='fighting' id='primeape'>Primeape</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/058.png' alt='Growlithe icon'> <button class='fire' id='growlithe'>Growlithe</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/059.png' alt='Arcanine icon'> <button class='fire' id='arcanine'>Arcanine</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/060.png' alt='Poliwag icon'> <button class='water' id='poliwag'>Poliwag</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/061.png' alt='Poliwhirl icon'> <button class='water' id='poliwhirl'>Poliwhirl</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/062.png' alt='Poliwrath icon'> <button class='water' id='poliwrath'>Poliwrath</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/063.png' alt='Abra icon'> <button class='psychic' id='abra'>Abra</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/064.png' alt='Kadabra icon'> <button class='psychic' id='kadabra'>Kadabra</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/065.png' alt='Alakazam icon'> <button class='psychic' id='alakazam'>Alakazam</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/066.png' alt='Machop icon'> <button class='fighting' id='machop'>Machop</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/067.png' alt='Machoke icon'> <button class='fighting' id='machoke'>Machoke</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/068.png' alt='Machamp icon'> <button class='fighting' id='machamp'>Machamp</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/069.png' alt='Bellsprout icon'> <button class='grass' id='bellsprout'>Bellsprout</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/070.png' alt='Weepinbell icon'> <button class='grass' id='weepinbell'>Weepinbell</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/071.png' alt='Victreebel icon'> <button class='grass' id='victreebel'>Victreebel</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/072.png' alt='Tentacool icon'> <button class='water' id='tentacool'>Tentacool</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/073.png' alt='Tentacruel icon'> <button class='water' id='tentacruel'>Tentacruel</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/074.png' alt='Geodude icon'> <button class='rock' id='geodude'>Geodude</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/075.png' alt='Graveler icon'> <button class='rock' id='graveler'>Graveler</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/076.png' alt='Golem icon'> <button class='rock' id='golem'>Golem</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/077.png' alt='Ponyta icon'> <button class='fire' id='ponyta'>Ponyta</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/078.png' alt='Rapidash icon'> <button class='fire' id='rapidash'>Rapidash</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/079.png' alt='Slowpoke icon'> <button class='water' id='slowpoke'>Slowpoke</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/080.png' alt='Slowbro icon'> <button class='water' id='slowbro'>Slowbro</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/081.png' alt='Magnemite icon'> <button class='electric' id='magnemite'>Magnemite</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/082.png' alt='Mangeton icon'> <button class='electric' id='magneton'>Magneton</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/083.png' alt='Farfetch icon'> <button class='normal' id='farfetch'>Farfetch'd</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/084.png' alt='Doduo icon'> <button class='normal' id='doduo'>Doduo</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/085.png' alt='Dodrio icon'> <button class='normal' id='dodrio'>Dodrio</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/086.png' alt='Seel icon'> <button class='water' id='seel'>Seel</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/087.png' alt='Dewgong icon'> <button class='water' id='dewgong'>Dewgong</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/088.png' alt='Grimer icon'> <button class='poison' id='grimer'>Grimer</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/089.png' alt='Muk icon'> <button class='poison' id='muk'>Muk</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/090.png' alt='Shellder icon'> <button class='water' id='shellder'>Shellder</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/091.png' alt='Cloyster icon'> <button class='water' id='cloyster'>Cloyster</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/092.png' alt='Gastly icon'> <button class='ghost' id='gastly'>Gastly</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/093.png' alt='Haunter icon'> <button class='ghost' id='haunter'>Haunter</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/094.png' alt='Gengar icon'> <button class='ghost' id='gengar'>Gengar</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/095.png' alt='Onix icon'> <button class='rock' id='onix'>Onix</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/096.png' alt='Drowzee icon'> <button class='psychic' id='drowzee'>Drowzee</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/097.png' alt='Hypno icon'> <button class='psychic' id='hypno'>Hypno</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/098.png' alt='Krabby icon'> <button class='water' id='krabby'>Krabby</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/099.png' alt='Kingler icon'> <button class='water' id='kingler'>Kingler</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/100.png' alt='Voltorb icon'> <button class='electric' id='voltorb'>Voltorb</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/101.png' alt='Electrode icon'> <button class='electric' id='electrode'>Electrode</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/102.png' alt='Exeggcute icon'> <button class='grass' id='exeggcute'>Exeggcute</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/103.png' alt='Exeggutor icon'> <button class='grass' id='exeggutor'>Exeggutor</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/104.png' alt='Cubone icon'> <button class='ground' id='cubone'>Cubone</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/105.png' alt='Marowak icon'> <button class='ground' id='marowak'>Marowak</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/106.png' alt='Hitmonlee icon'> <button class='fighting' id='hitmonlee'>Hitmonlee</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/107.png' alt='Hitmonchan icon'> <button class='fighting' id='hitmonchan'>Hitmonchan</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/108.png' alt='Lickitung icon'> <button class='normal' id='lickitung'>Lickitung</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/109.png' alt='Koffing icon'> <button class='poison' id='koffing'>Koffing</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/110.png' alt='Weezing icon'> <button class='poison' id='weezing'>Weezing</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/111.png' alt='Rhyhorn icon'> <button class='ground' id='rhyhorn'>Rhyhorn</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/112.png' alt='Rhydon icon'> <button class='ground' id='rhydon'>Rhydon</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/113.png' alt='Chansey icon'> <button class='normal' id='chansey'>Chansey</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/114.png' alt='Tangela icon'> <button class='grass' id='tangela'>Tangela</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/115.png' alt='Kangaskhan icon'> <button class='normal' id='kangaskhan'>Kangaskhan</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/116.png' alt='Horsea icon'> <button class='water' id='horsea'>Horsea</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/117.png' alt='Seadra icon'> <button class='water' id='seadra'>Seadra</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/118.png' alt='Goldeen icon'> <button class='water' id='goldeen'>Goldeen</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/119.png' alt='Seaking icon'> <button class='water' id='seaking'>Seaking</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/120.png' alt='Staryu icon'> <button class='water' id='staryu'>Staryu</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/121.png' alt='Starmie icon'> <button class='water' id='starmie'>Starmie</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/122.png' alt='Mime icon'> <button class='psychic' id='mime'>Mr. Mime</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/123.png' alt='Scyther icon'> <button class='bug' id='scyther'>Scyther</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/124.png' alt='Jynx icon'> <button class='ice' id='jynx'>Jynx</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/125.png' alt='Electabuzz icon'> <button class='electric' id='electabuzz'>Electabuzz</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/126.png' alt='Magmar icon'> <button class='fire' id='magmar'>Magmar</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/127.png' alt='Pinsir icon'> <button class='bug' id='pinsir'>Pinsir</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/128.png' alt='Tauros icon'> <button class='normal' id='tauros'>Tauros</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/129.png' alt='Magikarp icon'> <button class='water' id='magikarp'>Magikarp</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/130.png' alt='Gyarados icon'> <button class='water' id='gyarados'>Gyarados</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/131.png' alt='Lapras icon'> <button class='water' id='lapras'>Lapras</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/132.png' alt='Ditto icon'> <button class='normal' id='ditto'>Ditto</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/133.png' alt='Eevee icon'> <button class='normal' id='eevee'>Eevee</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/134.png' alt='Vaporeon icon'> <button class='water' id='vaporeon'>Vaporeon</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/135.png' alt='Jolteon icon'> <button class='electric' id='jolteon'>Jolteon</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/136.png' alt='Flareon icon'> <button class='fire' id='flareon'>Flareon</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/137.png' alt='Porygon icon'> <button class='normal' id='porygon'>Porygon</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/138.png' alt='Omanyte icon'> <button class='rock' id='omanyte'>Omanyte</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/139.png' alt='Omastar icon'> <button class='rock' id='omastar'>Omastar</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/140.png' alt='Kabuto icon'> <button class='rock' id='kabuto'>Kabuto</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/141.png' alt='Kabutops icon'> <button class='rock' id='kabutops'>Kabutops</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/142.png' alt='Aerodactyl icon'> <button class='rock' id='aerodactyl'>Aerodactyl</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/143.png' alt='Snorlax icon'> <button class='normal' id='snorlax'>Snorlax</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/144.png' alt='Articuno icon'> <button class='ice' id='articuno'>Articuno</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/145.png' alt='Zapdos icon'> <button class='electric' id='zapdos'>Zapdos</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/146.png' alt='Moltres icon'> <button class='fire' id='moltres'>Moltres</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/147.png' alt='Dratini icon'> <button class='dragon' id='dratini'>Dratini</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/148.png' alt='Dragonair icon'> <button class='dragon' id='dragonair'>Dragonair</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/149.png' alt='Dragonite icon'> <button class='dragon' id='dragonite'>Dragonite</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/150.png' alt='Mewtwo icon'> <button class='psychic' id='mewtwo'>Mewtwo</button>
-            <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/151.png' alt='Mew icon'> <button class='psychic' id='mew'>Mew</button>
-        </div>
+    <label for="rival-name"><b>Rival's name:</b></label>
+    <input type="text" id="rival" />
+  </div>
 
-        <div class="form-popup" id="bulbasaurConfirm">
-          <form class="confirm-container">
-          <h1>Bulbasaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon"></h1>
-          <h2>Type(s): Grass, Poison</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Tackle</li>
-            <li>Vine Whip</li>
-            <li>Stun Spore</li>
-            <li>Razor Leaf</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 20<br>HP: 45<br>Attack: 49<br>Defense: 49<br>Special Attack: 65<br>Special Defense: 65<br>Speed: 49</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelBulbasaur()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmBulbasaur() {
-            document.getElementById("bulbasaurConfirm").style.display = "block";
-          }
-          function cancelBulbasaur() {
-            document.getElementById("bulbasaurConfirm").style.display = "none";
-          }
-        </script>
+  <div class="infocard-list infocard-list">
+    <h2>Choose a Pokemon!</h2>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png" alt="Bulbasaur icon">
+    <button class="grass" onclick="confirmBulbasaur()" id="bulbasaur">Bulbasaur</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/002.png" alt="Ivysaur icon">
+    <button class="grass" onclick="confirmIvysaur()" id="ivysaur">Ivysaur</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/003.png" alt="Venusaur icon">
+    <button class="grass" id="venusaur">Venusaur</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/004.png" alt="Charmander icon">
+    <button class="fire" id="charmander">Charmander</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/005.png" alt="Charmeleon icon">
+    <button class="fire" id="charmeleon">Charmeleon</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/006.png" alt="Charizard icon">
+    <button class="fire" id="charizard">Charizard</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/007.png" alt="Squirtle icon">
+    <button class="water" id="squirtle">Squirtle</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/008.png" alt="Wartortle icon">
+    <button class="water" id="wartortle">Wartortle</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/009.png" alt="Blastoise icon">
+    <button class="water" id="blastoise">Blastoise</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/010.png" alt="Caterpie icon">
+    <button class="bug" id="caterpie">Caterpie</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/011.png" alt="Metapod icon">
+    <button class="bug" id="metapod">Metapod</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/012.png" alt="Butterfree icon">
+    <button class="bug" id="butterfree">Butterfree</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/013.png" alt="Weedle icon">
+    <button class="bug" id="weedle">Weedle</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/014.png" alt="Kakuna icon">
+    <button class="bug" id="kakuna">Kakuna</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/015.png" alt="Beedrill icon">
+    <button class="bug" id="beedrill">Beedrill</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/016.png" alt="Pidgey icon">
+    <button class="normal" id="pidgey">Pidgey</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/017.png" alt="Pidgeotto icon">
+    <button class="normal" id="pidgeotto">Pidgeotto</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/018.png" alt="Pidgeot icon">
+    <button class="normal" id="pidgeot">Pidgeot</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/019.png" alt="Rattata icon">
+    <button class="normal" id="rattata">Rattata</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/020.png" alt="Raticate icon">
+    <button class="normal" id="raticate">Raticate</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/021.png" alt="Spearow icon">
+    <button class="normal" id="spearow">Spearow</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/022.png" alt="Fearow icon">
+    <button class="normal" id="fearow">Fearow</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/023.png" alt="Ekans icon">
+    <button class="poison" id="ekans">Ekans</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/024.png" alt="Arbok icon">
+    <button class="poison" id="arbok">Arbok</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/025.png" alt="Pikachu icon">
+    <button class="electric" id="pikachu">Pikachu</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/026.png" alt="Raichu icon">
+    <button class="electric" id="raichu">Raichu</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/027.png" alt="Sandshrew icon">
+    <button class="ground" id="sandshrew">Sandshrew</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/028.png" alt="Sandslash icon">
+    <button class="ground" id="sandslash">Sandslash</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/029.png" alt="NidoranF icon">
+    <button class="poison" id="nidoranf">Nidoran (F)</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/030.png" alt="Nidorina icon">
+    <button class="poison" id="nidorina">Nidorina</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/031.png" alt="Nidoqueen icon">
+    <button class="poison" id="nidoqueen">Nidoqueen</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/032.png" alt="NidoranM icon">
+    <button class="poison" id="nidoranm">Nidoran (M)</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/033.png" alt="Nidorino icon">
+    <button class="poison" id="nidorino">Nidorino</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/034.png" alt="Nidoking icon">
+    <button class="poison" id="nidoking">Nidoking</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/035.png" alt="Clefairy icon">
+    <button class="normal" id="clefairy">Clefairy</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/036.png" alt="Clefable icon">
+    <button class="normal" id="clefable">Clefable</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/037.png" alt="Vulpix icon">
+    <button class="fire" id="vulpix">Vulpix</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/038.png" alt="Ninetales icon">
+    <button class="fire" id="ninetales">Ninetales</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/039.png" alt="Jigglypuff icon">
+    <button class="normal" id="jigglypuff">Jigglypuff</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/040.png" alt="Wigglytuff icon">
+    <button class="normal" id="wigglytuff">Wigglytuff</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/041.png" alt="Zubat icon">
+    <button class="poison" id="zubat">Zubat</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/042.png" alt="Golbat icon">
+    <button class="poison" id="golbat">Golbat</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/043.png" alt="Oddish icon">
+    <button class="grass" id="oddish">Oddish</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/044.png" alt="Gloom icon">
+    <button class="grass" id="gloom">Gloom</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/047.png" alt="Parasect icon">
+    <button class="bug" id="parasect">Parasect</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/048.png" alt="Venonat icon">
+    <button class="bug" id="venonat">Venonat</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/049.png" alt="Venomoth icon">
+    <button class="bug" id="venomoth">Venomoth</button>
+    <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/050.png" alt="Diglett icon">
+    <button class="ground" id="diglett">Diglett</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/051.png' alt='Dugtrio icon'>
+    <button class='ground' id='dugtrio'>Dugtrio</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/052.png' alt='Meowth icon'>
+    <button class='normal' id='meowth'>Meoth</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/053.png' alt='Persian icon'>
+    <button class='normal' id='persian'>Persian</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/054.png' alt='Psyduck icon'>
+    <button class='water' id='psyduck'>Psyduck</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/055.png' alt='Golduck icon'>
+    <button class='water' id='golduck'>Golduck</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/056.png' alt='Mankey icon'>
+    <button class='fighting' id='mankey'>Mankey</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/057.png' alt='Primeape icon'>
+    <button class='fighting' id='primeape'>Primeape</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/058.png' alt='Growlithe icon'>
+    <button class='fire' id='growlithe'>Growlithe</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/059.png' alt='Arcanine icon'>
+    <button class='fire' id='arcanine'>Arcanine</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/060.png' alt='Poliwag icon'>
+    <button class='water' id='poliwag'>Poliwag</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/061.png' alt='Poliwhirl icon'>
+    <button class='water' id='poliwhirl'>Poliwhirl</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/062.png' alt='Poliwrath icon'>
+    <button class='water' id='poliwrath'>Poliwrath</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/063.png' alt='Abra icon'>
+    <button class='psychic' id='abra'>Abra</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/064.png' alt='Kadabra icon'>
+    <button class='psychic' id='kadabra'>Kadabra</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/065.png' alt='Alakazam icon'>
+    <button class='psychic' id='alakazam'>Alakazam</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/066.png' alt='Machop icon'>
+    <button class='fighting' id='machop'>Machop</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/067.png' alt='Machoke icon'>
+    <button class='fighting' id='machoke'>Machoke</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/068.png' alt='Machamp icon'>
+    <button class='fighting' id='machamp'>Machamp</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/069.png' alt='Bellsprout icon'>
+    <button class='grass' id='bellsprout'>Bellsprout</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/070.png' alt='Weepinbell icon'>
+    <button class='grass' id='weepinbell'>Weepinbell</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/071.png' alt='Victreebel icon'>
+    <button class='grass' id='victreebel'>Victreebel</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/072.png' alt='Tentacool icon'>
+    <button class='water' id='tentacool'>Tentacool</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/073.png' alt='Tentacruel icon'>
+    <button class='water' id='tentacruel'>Tentacruel</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/074.png' alt='Geodude icon'>
+    <button class='rock' id='geodude'>Geodude</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/075.png' alt='Graveler icon'>
+    <button class='rock' id='graveler'>Graveler</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/076.png' alt='Golem icon'>
+    <button class='rock' id='golem'>Golem</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/077.png' alt='Ponyta icon'>
+    <button class='fire' id='ponyta'>Ponyta</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/078.png' alt='Rapidash icon'>
+    <button class='fire' id='rapidash'>Rapidash</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/079.png' alt='Slowpoke icon'>
+    <button class='water' id='slowpoke'>Slowpoke</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/080.png' alt='Slowbro icon'>
+    <button class='water' id='slowbro'>Slowbro</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/081.png' alt='Magnemite icon'>
+    <button class='electric' id='magnemite'>Magnemite</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/082.png' alt='Mangeton icon'>
+    <button class='electric' id='magneton'>Magneton</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/083.png' alt='Farfetch icon'>
+    <button class='normal' id='farfetch'>Farfetch'd</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/084.png' alt='Doduo icon'>
+    <button class='normal' id='doduo'>Doduo</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/085.png' alt='Dodrio icon'>
+    <button class='normal' id='dodrio'>Dodrio</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/086.png' alt='Seel icon'>
+    <button class='water' id='seel'>Seel</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/087.png' alt='Dewgong icon'>
+    <button class='water' id='dewgong'>Dewgong</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/088.png' alt='Grimer icon'>
+    <button class='poison' id='grimer'>Grimer</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/089.png' alt='Muk icon'> <button
+      class='poison' id='muk'>Muk</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/090.png' alt='Shellder icon'>
+    <button class='water' id='shellder'>Shellder</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/091.png' alt='Cloyster icon'>
+    <button class='water' id='cloyster'>Cloyster</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/092.png' alt='Gastly icon'>
+    <button class='ghost' id='gastly'>Gastly</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/093.png' alt='Haunter icon'>
+    <button class='ghost' id='haunter'>Haunter</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/094.png' alt='Gengar icon'>
+    <button class='ghost' id='gengar'>Gengar</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/095.png' alt='Onix icon'>
+    <button class='rock' id='onix'>Onix</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/096.png' alt='Drowzee icon'>
+    <button class='psychic' id='drowzee'>Drowzee</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/097.png' alt='Hypno icon'>
+    <button class='psychic' id='hypno'>Hypno</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/098.png' alt='Krabby icon'>
+    <button class='water' id='krabby'>Krabby</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/099.png' alt='Kingler icon'>
+    <button class='water' id='kingler'>Kingler</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/100.png' alt='Voltorb icon'>
+    <button class='electric' id='voltorb'>Voltorb</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/101.png' alt='Electrode icon'>
+    <button class='electric' id='electrode'>Electrode</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/102.png' alt='Exeggcute icon'>
+    <button class='grass' id='exeggcute'>Exeggcute</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/103.png' alt='Exeggutor icon'>
+    <button class='grass' id='exeggutor'>Exeggutor</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/104.png' alt='Cubone icon'>
+    <button class='ground' id='cubone'>Cubone</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/105.png' alt='Marowak icon'>
+    <button class='ground' id='marowak'>Marowak</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/106.png' alt='Hitmonlee icon'>
+    <button class='fighting' id='hitmonlee'>Hitmonlee</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/107.png' alt='Hitmonchan icon'>
+    <button class='fighting' id='hitmonchan'>Hitmonchan</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/108.png' alt='Lickitung icon'>
+    <button class='normal' id='lickitung'>Lickitung</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/109.png' alt='Koffing icon'>
+    <button class='poison' id='koffing'>Koffing</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/110.png' alt='Weezing icon'>
+    <button class='poison' id='weezing'>Weezing</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/111.png' alt='Rhyhorn icon'>
+    <button class='ground' id='rhyhorn'>Rhyhorn</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/112.png' alt='Rhydon icon'>
+    <button class='ground' id='rhydon'>Rhydon</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/113.png' alt='Chansey icon'>
+    <button class='normal' id='chansey'>Chansey</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/114.png' alt='Tangela icon'>
+    <button class='grass' id='tangela'>Tangela</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/115.png' alt='Kangaskhan icon'>
+    <button class='normal' id='kangaskhan'>Kangaskhan</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/116.png' alt='Horsea icon'>
+    <button class='water' id='horsea'>Horsea</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/117.png' alt='Seadra icon'>
+    <button class='water' id='seadra'>Seadra</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/118.png' alt='Goldeen icon'>
+    <button class='water' id='goldeen'>Goldeen</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/119.png' alt='Seaking icon'>
+    <button class='water' id='seaking'>Seaking</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/120.png' alt='Staryu icon'>
+    <button class='water' id='staryu'>Staryu</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/121.png' alt='Starmie icon'>
+    <button class='water' id='starmie'>Starmie</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/122.png' alt='Mime icon'>
+    <button class='psychic' id='mime'>Mr. Mime</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/123.png' alt='Scyther icon'>
+    <button class='bug' id='scyther'>Scyther</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/124.png' alt='Jynx icon'>
+    <button class='ice' id='jynx'>Jynx</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/125.png' alt='Electabuzz icon'>
+    <button class='electric' id='electabuzz'>Electabuzz</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/126.png' alt='Magmar icon'>
+    <button class='fire' id='magmar'>Magmar</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/127.png' alt='Pinsir icon'>
+    <button class='bug' id='pinsir'>Pinsir</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/128.png' alt='Tauros icon'>
+    <button class='normal' id='tauros'>Tauros</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/129.png' alt='Magikarp icon'>
+    <button class='water' id='magikarp'>Magikarp</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/130.png' alt='Gyarados icon'>
+    <button class='water' id='gyarados'>Gyarados</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/131.png' alt='Lapras icon'>
+    <button class='water' id='lapras'>Lapras</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/132.png' alt='Ditto icon'>
+    <button class='normal' id='ditto'>Ditto</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/133.png' alt='Eevee icon'>
+    <button class='normal' id='eevee'>Eevee</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/134.png' alt='Vaporeon icon'>
+    <button class='water' id='vaporeon'>Vaporeon</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/135.png' alt='Jolteon icon'>
+    <button class='electric' id='jolteon'>Jolteon</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/136.png' alt='Flareon icon'>
+    <button class='fire' id='flareon'>Flareon</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/137.png' alt='Porygon icon'>
+    <button class='normal' id='porygon'>Porygon</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/138.png' alt='Omanyte icon'>
+    <button class='rock' id='omanyte'>Omanyte</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/139.png' alt='Omastar icon'>
+    <button class='rock' id='omastar'>Omastar</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/140.png' alt='Kabuto icon'>
+    <button class='rock' id='kabuto'>Kabuto</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/141.png' alt='Kabutops icon'>
+    <button class='rock' id='kabutops'>Kabutops</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/142.png' alt='Aerodactyl icon'>
+    <button class='rock' id='aerodactyl'>Aerodactyl</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/143.png' alt='Snorlax icon'>
+    <button class='normal' id='snorlax'>Snorlax</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/144.png' alt='Articuno icon'>
+    <button class='ice' id='articuno'>Articuno</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/145.png' alt='Zapdos icon'>
+    <button class='electric' id='zapdos'>Zapdos</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/146.png' alt='Moltres icon'>
+    <button class='fire' id='moltres'>Moltres</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/147.png' alt='Dratini icon'>
+    <button class='dragon' id='dratini'>Dratini</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/148.png' alt='Dragonair icon'>
+    <button class='dragon' id='dragonair'>Dragonair</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/149.png' alt='Dragonite icon'>
+    <button class='dragon' id='dragonite'>Dragonite</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/150.png' alt='Mewtwo icon'>
+    <button class='psychic' id='mewtwo'>Mewtwo</button>
+    <img class='img-fixed icon-pkmn' src='https://www.serebii.net/pokearth/sprites/frlg/151.png' alt='Mew icon'> <button
+      class='psychic' id='mew'>Mew</button>
+  </div>
 
-        <div class="form-popup" id="ivysaurConfirm">
-          <form class="confirm-container">
-          <h1>Ivysaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/002.png" alt="Ivysaur icon"></h1>
-          <h2>Type(s): Grass, Poison</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Tackle</li>
-            <li>Poison Powder</li>
-            <li>Razor Leaf</li>
-            <li>Solarbeam</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 30<br>HP: 60<br>Attack: 62<br>Defense: 63<br>Special Attack: 80<br>Special Defense: 80<br>Speed: 60</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelIvysaur()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmIvysaur() {
-            document.getElementById("ivysaurConfirm").style.display = "block";
-          }
-          function cancelIvysaur() {
-            document.getElementById("ivysaurConfirm").style.display = "none";
-          }
-        </script>
+  <div class="form-popup" id="bulbasaurConfirm">
+    <form class="confirm-container">
+      <h1>Bulbasaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/001.png"
+          alt="Bulbasaur icon"></h1>
+      <h2>Moves:</h2>
+      <ul>
+        <li>Tackle</li>
+        <li>Vine Whip</li>
+        <li>Stun Spore</li>
+        <li>Razor Leaf</li>
+      </ul>
+      <h2>Stats:</h2>
+      <h3>Level: 20<br>HP: 45<br>Attack: 49<br>Defense: 49<br>Special Attack: 65<br>Special Defense: 65<br>Speed: 49
+      </h3>
+      <button type="button" class="btn">Choose this Pokemon!</button>
+      <button type="button" class="btn cancel" onclick="cancel()">Close</button>
+    </form>
+  </div>
+  <script>
+    function confirmBulbasaur() {
+      document.getElementById("bulbasaurConfirm").style.display = "block";
+    }
+    function cancelBulbasaur() {
+      document.getElementById("bulbasaurConfirm").style.display = "none";
+    }
+  </script>
 
-        <div class="form-popup" id="venusaurConfirm">
-          <form class="confirm-container">
-          <h1>Venusaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/003.png" alt="Venusaur icon"></h1>
-          <h2>Type(s): Grass, Poison</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Razor Leaf</li>
-            <li>Sleep Powder</li>
-            <li>Synthesis</li>
-            <li>Solarbeam</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 40<br>HP: 80<br>Attack: 82<br>Defense: 83<br>Special Attack: 100<br>Special Defense: 100<br>Speed: 80</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelVenusaur()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmVenusaur() {
-            document.getElementById("venusaurConfirm").style.display = "block";
-          }
-          function cancelVenusaur() {
-            document.getElementById("venusaurConfirm").style.display = "none";
-          }
-        </script>
+  <div class="form-popup" id="ivysaurConfirm">
+    <form class="confirm-container">
+      <h1></h1>
+      <h1>Ivysaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/002.png"
+          alt="Ivysaur icon"></h1>
+      <h2>Moves:</h2>
+      <ul>
+        <li>Tackle</li>
+        <li>Poison Powder</li>
+        <li>Razor Leaf</li>
+        <li>Solarbeam</li>
+      </ul>
+      <h2>Stats:</h2>
+      <p id = "ivysaurStats"></p>
+      <!--<h3>Level: 30<br>HP: 60<br>Attack: 62<br>Defense: 63<br>Special Attack: 80<br>Special Defense: 80<br>Speed: 60
+      </h3>-->
+      <button type="button" class="btn">Choose this Pokemon!</button>
+      <button type="button" class="btn cancel" onclick="cancel()">Close</button>
+    </form>
+  </div>
+  <script>
+    
+    document.getElementById('ivysaurStats').innerHTML = getStats(ivysaur);
 
-        <div class="form-popup" id="charmanderConfirm">
-          <form class="confirm-container">
-          <h1>Charmander <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/004.png" alt="Charmander icon"></h1>
-          <h2>Type(s): Fire</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Scratch</li>
-            <li>Ember</li>
-            <li>Growl</li>
-            <li>Metal Claw</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 20<br>HP: 39<br>Attack: 52<br>Defense: 43<br>Special Attack: 60<br>Special Defense: 50<br>Speed: 65</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelCharmander()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmCharmander() {
-            document.getElementById("charmanderConfirm").style.display = "block";
-          }
-          function cancelCharmander() {
-            document.getElementById("charmanderConfirm").style.display = "none";
-          }
-        </script>
+    function confirmIvysaur() {
+      document.getElementById("ivysaurConfirm").style.display = "block";
+    }
 
-        <div class="form-popup" id="charmeleonConfirm">
-          <form class="confirm-container">
-          <h1>Charmeleon <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/005.png" alt="Charmeleon icon"></h1>
-          <h2>Type(s): Fire</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Scratch</li>
-            <li>Metal Claw</li>
-            <li>Smokescreen</li>
-            <li>Flamethrower</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 30<br>HP: 58<br>Attack: 64<br>Defense: 58<br>Special Attack: 80<br>Special Defense: 65<br>Speed: 80</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelCharmeleon()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmCharmeleon() {
-            document.getElementById("charmeleonConfirm").style.display = "block";
-          }
-          function cancelCharmeleon() {
-            document.getElementById("charmeleonConfirm").style.display = "none";
-          }
-        </script>
+    function cancelIvysaur() {
+      document.getElementById("ivysaurConfirm").style.display = "none";
+    }
+  </script>
 
-        <div class="form-popup" id="charizardConfirm">
-          <form class="confirm-container">
-          <h1>Charizard <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/006.png" alt="Charizard icon"></h1>
-          <h2>Type(s): Fire, Flying</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Slash</li>
-            <li>Smokescreen</li>
-            <li>Flamethrower</li>
-            <li>Wing Attack</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 40<br>HP: 78<br>Attack: 84<br>Defense: 78<br>Special Attack: 109<br>Special Defense: 85<br>Speed: 100</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelCharizard()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmCharizard() {
-            document.getElementById("charizardConfirm").style.display = "block";
-          }
-          function cancelCharizard() {
-            document.getElementById("charizardConfirm").style.display = "none";
-          }
-        </script>
+  <script>
+    function cancel() {
+      //document.getElementsByClassName("confirm-container")[0].style.display = "none";
+      document.getElementsByClassName("confirm-container").forEach(element => {
+        element.style.display = "none";
+      });
+    }
+  </script>
+</body>
 
-        <div class="form-popup" id="squirtleConfirm">
-          <form class="confirm-container">
-          <h1>Squirtle <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/007.png" alt="Squirtle icon"></h1>
-          <h2>Type(s): Water</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Tackle</li>
-            <li>Tail Whip</li>
-            <li>Water Gun</li>
-            <li>Bite</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 20<br>HP: 44<br>Attack: 48<br>Defense: 65<br>Special Attack: 50<br>Special Defense: 64<br>Speed: 43</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelSquirtle()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmSquirtle() {
-            document.getElementById("squirtleConfirm").style.display = "block";
-          }
-          function cancelSquirtle() {
-            document.getElementById("squirtleConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="wartortleConfirm">
-          <form class="confirm-container">
-          <h1>Wartortle <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/008.png" alt="Wartortle icon"></h1>
-          <h2>Type(s): Water</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Bite</li>
-            <li>Tail Whip</li>
-            <li>Water Gun</li>
-            <li>Hydro Pump</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 30<br>HP: 59<br>Attack: 63<br>Defense: 80<br>Special Attack: 65<br>Special Defense: 80<br>Speed: 58</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelWartortle()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmWartortle() {
-            document.getElementById("wartortleConfirm").style.display = "block";
-          }
-          function cancelWartortle() {
-            document.getElementById("wartortleConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="blastoiseConfirm">
-          <form class="confirm-container">
-          <h1>Blastoise <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/009.png" alt="Blastoise icon"></h1>
-          <h2>Type(s): Water</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Skull Bash</li>
-            <li>Tail Whip</li>
-            <li>Water Gun</li>
-            <li>Hydro Pump</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 40<br>HP: 79<br>Attack: 83<br>Defense: 100<br>Special Attack: 85<br>Special Defense: 105<br>Speed: 78</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelBlastoise()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmBlastoise() {
-            document.getElementById("blastoiseConfirm").style.display = "block";
-          }
-          function cancelBlastoise() {
-            document.getElementById("blastoiseConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="caterpieConfirm">
-          <form class="confirm-container">
-          <h1>Caterpie <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/010.png" alt="Caterpie icon"></h1>
-          <h2>Type(s): Bug</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Tackle</li>
-            <li>String Shot</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 20<br>HP: 45<br>Attack: 30<br>Defense: 35<br>Special Attack: 20<br>Special Defense: 20<br>Speed: 45</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelCaterpie()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmCaterpie() {
-            document.getElementById("caterpieConfirm").style.display = "block";
-          }
-          function cancelCaterpie() {
-            document.getElementById("caterpieConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="metapodConfirm">
-          <form class="confirm-container">
-          <h1>Metapod <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/011.png" alt="Metapod icon"></h1>
-          <h2>Type(s): Bug</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Tackle</li>
-            <li>String Shot</li>
-            <li>Hardenn</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 30<br>HP: 50<br>Attack: 20<br>Defense: 55<br>Special Attack: 25<br>Special Defense: 25<br>Speed: 30</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelMetapod()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmMetapod() {
-            document.getElementById("metapodConfirm").style.display = "block";
-          }
-          function cancelMetapod() {
-            document.getElementById("metapodConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="butterfreeConfirm">
-          <form class="confirm-container">
-          <h1>Butterfree <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/012.png" alt="Butterfree icon"></h1>
-          <h2>Type(s): Bug, Flying</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Confusion</li>
-            <li>Gust</li>
-            <li>Silver Wind</li>
-            <li>Supersonic</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 40<br>HP: 60<br>Attack: 45<br>Defense: 50<br>Special Attack: 90<br>Special Defense: 80<br>Speed: 70</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelButterfree()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmButterfree() {
-            document.getElementById("butterfreeConfirm").style.display = "block";
-          }
-          function cancelButterfree() {
-            document.getElementById("butterfreeConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="weedleConfirm">
-          <form class="confirm-container">
-          <h1>Weedle <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/013.png" alt="Weedle icon"></h1>
-          <h2>Type(s): Bug, Poison</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Poison Sting</li>
-            <li>String Shot</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 20<br>HP: 40<br>Attack: 35<br>Defense: 30<br>Special Attack: 20<br>Special Defense: 20<br>Speed: 50</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelWeedle()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmWeedle() {
-            document.getElementById("weedleConfirm").style.display = "block";
-          }
-          function cancelWeedle() {
-            document.getElementById("weedleConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="kakunaConfirm">
-          <form class="confirm-container">
-          <h1>Kakuna <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/014.png" alt="Kakuna icon"></h1>
-          <h2>Type(s): Bug, Poison</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Poison Sting</li>
-            <li>String Shot</li>
-            <li>Harden</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 30<br>HP: 45<br>Attack: 25<br>Defense: 50<br>Special Attack: 25<br>Special Defense: 25<br>Speed: 35</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelKakuna()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmKakuna() {
-            document.getElementById("kakunaConfirm").style.display = "block";
-          }
-          function cancelKakuna() {
-            document.getElementById("kakunaConfirm").style.display = "none";
-          }
-        </script>
-
-        <div class="form-popup" id="beedrillConfirm">
-          <form class="confirm-container">
-          <h1>Beedrill <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/015.png" alt="Beedrill icon"></h1>
-          <h2>Type(s): Bug, Poison</h2>
-          <h2>Moves:</h2>
-          <ul>
-            <li>Twineedle</li>
-            <li>Rage</li>
-            <li>Pursuit</li>
-            <li>Agility</li>
-          </ul>
-          <h2>Stats:</h2>
-          <h3>Level: 40<br>HP: 65<br>Attack: 90<br>Defense: 40<br>Special Attack: 45<br>Special Defense: 80<br>Speed: 75</h3>
-          <button type="button" class="btn">Choose this Pokemon!</button>
-          <button type="button" class="btn cancel" onclick="cancelBeedrill()">Close</button>
-          </form>
-        </div>
-        <script>
-          function confirmBeedrill() {
-            document.getElementById("beedrillConfirm").style.display = "block";
-          }
-          function cancelBeedrill() {
-            document.getElementById("beedrillConfirm").style.display = "none";
-          }
-        </script>
-
-        <script src="pokedex.js"></script>
-        <script>
-          function cancel(){
-            //document.getElementsByClassName("confirm-container")[0].style.display = "none";
-            document.getElementsByClassName("confirm-container").forEach(element => {
-              element.style.display = "none";
-            });
-          }
-        </script>
-    </body>
 </html>
-
