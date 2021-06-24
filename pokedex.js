@@ -110,10 +110,16 @@ function getStats(pokemon){
 function arrToUL(pokemon) {
 
     let movesRaw = JSON.stringify(pokemon.moves);
-
     let movesListArr = JSON.parse(movesRaw);
 
     var inner = '';
+
+    // Capitalizes the first character of each string in the array
+    // Gratefully lifted from:
+    // https://stackoverflow.com/questions/35067294/capitalize-the-first-letter-of-every-word-in-array  --  azywiak
+    movesListArr = movesListArr.map(function(str){
+        return str.charAt(0).toUpperCase() + str.slice(1).replace(/ -/, ':');
+      });
 
     for (i in movesListArr) {
         inner += "<li>" + movesListArr[i] + "</li>";

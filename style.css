@@ -122,3 +122,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
     font-size: 15pt;
     font-weight: bold;
 }
+
+#ivysaurMoves {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15pt;
+    font-weight: bold;
+    padding-left: 15px;
+}
