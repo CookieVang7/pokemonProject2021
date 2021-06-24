@@ -103,3 +103,21 @@ function getStats(pokemon){
 
     return str;
 }
+
+/*
+    Formats a given array into an unordered list to be used in an HTML document.
+*/
+function arrToUL(pokemon) {
+
+    let movesRaw = JSON.stringify(pokemon.moves);
+
+    let movesListArr = JSON.parse(movesRaw);
+
+    var inner = '';
+
+    for (i in movesListArr) {
+        inner += "<li>" + movesListArr[i] + "</li>";
+    }
+
+    return inner;
+}

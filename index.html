@@ -7,8 +7,7 @@
     device, or application. It's been adopted by all modern software providers and allows data to be transported
     easily. UTF-8 is an encoding system for Unicode, it can translate any Unicode character to a unique binary string
     and can translate any binary string back to a Unicode character-->
-  <meta charset="utf-8" />
-  <script type="text/javascript" src="jquery.1.9.1.js"></script>    
+  <meta charset="utf-8" /> 
   <script type = "text/javascript" src="pokedex.js"></script>
   <!--The "title" tag is the name of the page-->
   <title>PokemonSummerProject</title>
@@ -368,12 +367,7 @@
       <h1>Ivysaur <img class="img-fixed icon-pkmn" src="https://www.serebii.net/pokearth/sprites/frlg/002.png"
           alt="Ivysaur icon"></h1>
       <h2>Moves:</h2>
-      <ul>
-        <li>Tackle</li>
-        <li>Poison Powder</li>
-        <li>Razor Leaf</li>
-        <li>Solarbeam</li>
-      </ul>
+      <pre id = "ivysaurMoves"></pre>
       <h2>Stats:</h2>
       <p id = "ivysaurStats"></p>
       <button type="button" class="btn">Choose this Pokemon!</button>
@@ -382,6 +376,8 @@
   </div>
   <script>
     
+    document.getElementById('ivysaurMoves').innerHTML = arrToUL(ivysaur);
+
     document.getElementById('ivysaurStats').innerHTML = getStats(ivysaur);
 
     function confirmIvysaur() {
