@@ -46,6 +46,21 @@ let golbat = {name:"Golbat", type1:"poison", type2:"flying", level:"35", hp:"75"
 let oddish = {name:"Oddish", type1:"grass", type2:"poison", level:"20", hp:"40", attack:"45", defense:"50", specAtk:"75", specDef:"65", speed:"30", moves:["absorb","poison powder","stun spore","acid"], status:"none"};
 let gloom = {name:"Gloom", type1:"grass", type2:"poison", level:"30", hp:"60", attack:"65", defense:"70", specAtk:"85", specDef:"75", speed:"40", moves:["absorb","acid","moonlight","sleep powder"], status:"none"};
 let vileplume = {name:"Vileplume", type1:"grass", type2:"poison", level:"40", hp:"75", attack:"80", defense:"85", specAtk:"110", specDef:"90", speed:"50", moves:["petal dance","sleep powder","moonlight","acid"], status:"none"};
+let paras = {name:"Paras", type1:"bug", type2:"grass", level:"25", hp:"35", attack:"70", defense:"55", specAtk:"45", specDef:"55", speed:"25", moves:["scratch","stun spore","leech life","spore"], status:"none"};
+let parasect = {name:"Parasect", type1:"bug", type2:"grass", level:"35", hp:"60", attack:"95", defense:"80", specAtk:"60", specDef:"80", speed:"30", moves:["slash","growth","giga drain","aromatherapy"], status:"none"};
+let venonat = {name:"Venonat", type1:"bug", type2:"poison", level:"25", hp:"60", attack:"55", defense:"50", specAtk:"40", specDef:"55", speed:"45", moves:["tackle","confusion","poison powder","leech life"], status:"none"};
+let venomoth = {name:"Venomoth", type1:"bug", type2:"poison", level:"35", hp:"70", attack:"65", defense:"60", specAtk:"90", specDef:"75", speed:"90", moves:["gust","stun spore","sleep powder","psychic"], status:"none"};
+let diglett = {name:"Diglett", type1:"ground", type2:"none", level:"25", hp:"10", attack:"55", defense:"25", specAtk:"35", specDef:"45", speed:"95", moves:["scratch","growl","dig","magnitude"], status:"none"};
+let dugtrio = {name:"Dugtrio", type1:"ground", type2:"none", level:"35", hp:"35", attack:"100", defense:"50", specAtk:"50", specDef:"70", speed:"120", moves:["mud slap","slash","earthquake","sand tomb"], status:"none"};
+let meowth = {name:"Meowth", type1:"normal", type2:"none", level:"25", hp:"40", attack:"45", defense:"35", specAtk:"40", specDef:"40", speed:"90", moves:["scratch","growl","bite","pay day"], status:"none"};
+let persian = {name:'Persian', type1:'normal', type2:'none', level:'35', hp:'65', attack:'70', defense:'60', specAtk:'65', specDef:'65', speed:'115', moves:['faint attack','screech','fury swipes','slash'], status:'none'};
+let psyduck = {name:'Psyduck', type1:'water', type2:'none', level:'25', hp:'50', attack:'52', defense:'48', specAtk:'65', specDef:'50', speed:'55', moves:['scratch','tail whip','confusion','screech'], status:'none'};
+let golduck = {name:'Golduck', type1:'water', type2:'none', level:'35', hp:'80', attack:'82', defense:'78', specAtk:'95', specDef:'80', speed:'85', moves:['confusion','screech','fury swipes','hydro pump'], status:'none'};
+let mankey = {name:'Mankey', type1:'fighting', type2:'none', level:'25', hp:'40', attack:'80', defense:'35', specAtk:'35', specDef:'45', speed:'70', moves:['scratch','leer','fury swipes','karate chop'], status:'none'};
+let primeape = {name:'Primeape', type1:'fighting', type2:'none', level:'35', hp:'65', attack:'105', defense:'60', specAtk:'60', specDef:'70', speed:'95', moves:['seismic toss','cross chop','screech','thrash'], status:'none'};
+let growlithe = {name:'Growlithe', type1:'fire', type2:'none', level:'25', hp:'55', attack:'70', defense:'45', specAtk:'70', specDef:'50', speed:'60', moves:['bite','ember','leer','take down'], status:'none'};
+let arcanine = {name:'Arcanine', type1:'fire', type2:'none', level:'35', hp:'90', attack:'110', defense:'80', specAtk:'100', specDef:'80', speed:'95', moves:['flame wheel','agility','flamethrower','extremespeed'], status:'none'};
+
 
 //The list of pokemon moves that deal damage, their type, power points (PP), power, accuracy, and change of status effects
 let tackle = {type:"normal", power:"35", accuracy:".95", pp:"35", effect:"0"};
