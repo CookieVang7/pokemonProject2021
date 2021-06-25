@@ -60,6 +60,27 @@ let mankey = {name:'Mankey', type1:'fighting', type2:'none', level:'25', hp:'40'
 let primeape = {name:'Primeape', type1:'fighting', type2:'none', level:'35', hp:'65', attack:'105', defense:'60', specAtk:'60', specDef:'70', speed:'95', moves:['seismic toss','cross chop','screech','thrash'], status:'none'};
 let growlithe = {name:'Growlithe', type1:'fire', type2:'none', level:'25', hp:'55', attack:'70', defense:'45', specAtk:'70', specDef:'50', speed:'60', moves:['bite','ember','leer','take down'], status:'none'};
 let arcanine = {name:'Arcanine', type1:'fire', type2:'none', level:'35', hp:'90', attack:'110', defense:'80', specAtk:'100', specDef:'80', speed:'95', moves:['flame wheel','agility','flamethrower','extremespeed'], status:'none'};
+let poliwag = {name:'Poliwag', type1:'water', type2:'none', level:'20', hp:'40', attack:'50', defense:'40', specAtk:'40', specDef:'40', speed:'90', moves:['bubble','hypnosis','water gun','double slap'], status:'none'};
+let poliwhirl = {name:'Poliwhirl', type1:'water', type2:'none', level:'30', hp:'65', attack:'65', defense:'65', specAtk:'50', specDef:'50', speed:'90', moves:['water gun','doubleslap','body slam','belly drum'], status:'none'};
+let poliwrath = {name:'Poliwrath', type1:'water', type2:'fighting', level:'40', hp:'90', attack:'95', defense:'95', specAtk:'70', specDef:'90', speed:'70', moves:['hydro pump','belly drum','submission','body slam'], status:'none'};
+let abra = {name:'Abra', type1:'psychic', type2:'none', level:'20', hp:'25', attack:'20', defense:'15', specAtk:'105', specDef:'55', speed:'90', moves:['teleport'], status:'none'};
+let kadabra = {name:'Kadabra', type1:'psychic', type2:'none', level:'30', hp:'40', attack:'35', defense:'30', specAtk:'120', specDef:'70', speed:'105', moves:['confusion','disable','psybeam','reflect'], status:'none'};
+let alakazam = {name:'Alakazam', type1:'psychic', type2:'none', level:'40', hp:'55', attack:'50', defense:'45', specAtk:'135', specDef:'95', speed:'120', moves:['psychic','calm mind','future sight','recover'], status:'none'};
+let machop = {name:'Machop', type1:'fighting', type2:'none', level:'20', hp:'70', attack:'80', defense:'50', specAtk:'35', specDef:'35', speed:'35', moves:['low kick','leer','karate chop','seismic toss'], status:'none'};
+let machoke = {name:'Machoke', type1:'fighting', type2:'none', level:'30', hp:'80', attack:'100', defense:'70', specAtk:'50', specDef:'60', speed:'45', moves:['revenge','leer','seismic toss','vital throw'], status:'none'};
+let machamp = {name:'Machamp', type1:'fighting', type2:'none', level:'40', hp:'90', attack:'130', defense:'80', specAtk:'65', specDef:'85', speed:'55', moves:['submission','cross chop','scary face','dynamicpunch'], status:'none'};
+let bellsprout = {name:'Bellsprout', type1:'grass', type2:'poison', level:'20', hp:'50', attack:'75', defense:'35', specAtk:'70', specDef:'30', speed:'40', moves:['vine whip','growth','wrap','sleep powder'], status:'none'};
+let weepinbell = {name:'Weepinbell', type1:'grass', type2:'poison', level:'30', hp:'65', attack:'90', defense:'50', specAtk:'85', specDef:'45', speed:'55', moves:['vine whip','poisonpowder','acid','stun spore'], status:'none'};
+let victreebel = {name:'Victreebel', type1:'grass', type2:'poison', level:'40', hp:'80', attack:'105', defense:'65', specAtk:'100', specDef:'70', speed:'70', moves:['acid','stun spore','razor leaf','slam'], status:'none'};
+let tentacool = {name:'Tentacool', type1:'water', type2:'poison', level:'25', hp:'40', attack:'40', defense:'35', specAtk:'50', specDef:'100', speed:'70', moves:['poison sting','constrict','acid','bubblebeam'], status:'none'};
+let tentacruel = {name:'Tentacruel', type1:'water', type2:'poison', level:'35', hp:'80', attack:'70', defense:'65', specAtk:'80', specDef:'120', speed:'100', moves:['wrap','barrier','screech','hydro pump'], status:'none'};
+let geodude = {name:'Geodude', type1:'rock', type2:'ground', level:'20', hp:'40', attack:'80', defense:'100', specAtk:'30', specDef:'30', speed:'20', moves:['tackle','defense curl','rock throw','magnitude'], status:'none'};
+let graveler = {name:'Graveler', type1:'rock', type2:'ground', level:'30', hp:'55', attack:'95', defense:'115', specAtk:'45', specDef:'45', speed:'35', moves:['magnitude','defense curl','rollout','selfdestruct'], status:'none'};
+let golem = {name:'Golem', type1:'rock ', type2:'ground', level:'40', hp:'80', attack:'120', defense:'130', specAtk:'55', specDef:'65', speed:'45', moves:['rock blast','earthquake','explosion','double edge'], status:'none'};
+let ponyta = {name:'Ponyta', type1:'fire', type2:'none', level:'25', hp:'50', attack:'85', defense:'55', specAtk:'65', specDef:'65', speed:'90', moves:['ember','stomp','tail whip','fire spin'], status:'none'};
+let rapidash = {name:'Rapidash', type1:'fire', type2:'none', level:'35', hp:'65', attack:'100', defense:'70', specAtk:'80', specDef:'80', speed:'105', moves:['take down','agility','bounce','fire blast'], status:'none'};
+let slowpoke = {name:'Slowpoke', type1:'water', type2:'psychic', level:'25', hp:'90', attack:'65', defense:'65', specAtk:'40', specDef:'40', speed:'15', moves:['yawn','tackle','water gun','confusion'], status:'none'};
+let slowbro = {name:'Slowbro', type1:'water', type2:'psychic', level:'35', hp:'95', attack:'75', defense:'110', specAtk:'100', specDef:'80', speed:'30', moves:['disable','headbutt','amnesia','psychic'], status:'none'};
 
 
 //The list of pokemon moves that deal damage, their type, power points (PP), power, accuracy, and change of status effects
