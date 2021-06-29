@@ -86,10 +86,6 @@ let poisonSting = {type:"poison", power:"15", accuracy:"1", pp:"35", effect:".3"
 let twinneedle = {type:"bug", power:"25", accuracy:"1", pp:"20", effect:".2"};
 let silverWind = {type:"bug", power:"60", accuracy:"1", pp:"5", effect:".1"};
 
-function getPokemonInfo(pokemon){
-    return pokemon;
-}
-
 function getHP(pokemon){
     alert(pokemon.hp);
 }
