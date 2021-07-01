@@ -1,5 +1,5 @@
 /* 
-Fetch data in JSON format from PokeAPI about a 
+Fetch data in JSON format from pokeapi.co about a 
 pokemon using either an numeric id or
 string that is a valid pokemon name
 */
@@ -9,9 +9,18 @@ async function getPokemonInfo(id) {
     const pokemonData = await result.json();
     console.log(pokemonData);
 }
-
-//Run in browser for result
+//Test
 //getPokemonInfo(1);
+
+async function getPokedexe(id) {
+    const pokeURL = `https://pokeapi.co/api/v2/pokedex/${id}`;
+    const result = await fetch(pokeURL);
+    const pokedexData = await result.json();
+    console.log(pokedexData);
+}
+//Test getting pokedex for first area "kanto" (Original 150)
+getPokedexe("kanto")
+
 
 // References a div in the index body that will contain all Pokemon Cards
 const pokeCardContainer = document.getElementById('pokeCardContainer');
