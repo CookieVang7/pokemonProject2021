@@ -1,3 +1,4 @@
+const originalPokemonLastIndex = 151
 /* 
 Fetch data in JSON format from pokeapi.co about a 
 pokemon using either an numeric id or
@@ -12,6 +13,14 @@ async function getPokemonInfo(id) {
 //Test
 //getPokemonInfo(1);
 
+// Fetches the original 151 pokemon (with happen to be 1:151)
+async function fetchOriginalPokemon() {
+    for (let index = 1; index <= originalPokemonLastIndex; index++) {
+        await getPokemonInfo(index);
+    }
+}
+fetchOriginalPokemon();
+
 /* 
 Fetch data in JSON format from pokeapi.co about 
 a pokedex using either an numeric id or
@@ -25,7 +34,7 @@ async function getPokedexe(id) {
     console.log(pokedexData.pokemon_entries);
 }
 //Test getting pokedex for first area "kanto" (Original 150)
-getPokedexe("kanto")
+//getPokedexe("kanto")
 
 
 // References a div in the index body that will contain all Pokemon Cards
