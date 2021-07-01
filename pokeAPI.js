@@ -11,4 +11,21 @@ async function getPokemonInfo(id) {
 }
 
 //Run in browser for result
-getPokemonInfo(1);
+//getPokemonInfo(1);
+
+// References a div in the index body that will contain all Pokemon Cards
+const pokeCardContainer = document.getElementById('pokeCardContainer');
+
+/* Creates an html div for on each call that displays a pokemon
+*/
+function createPokemonCard(pokemon) {
+    const pokemonElemenmt = document.createElement('div');
+    pokemonElemenmt.classList.add('pokemon');
+
+    const pokeInnerHTML = "test";
+
+    pokemonElemenmt.innerHTML = pokeInnerHTML
+    
+    pokeCardContainer.appendChild(pokemonElemenmt)
+}
+createPokemonCard();
