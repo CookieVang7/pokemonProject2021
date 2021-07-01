@@ -12,11 +12,17 @@ async function getPokemonInfo(id) {
 //Test
 //getPokemonInfo(1);
 
+/* 
+Fetch data in JSON format from pokeapi.co about 
+a pokedex using either an numeric id or
+string that is a valid pokemon location
+*/
 async function getPokedexe(id) {
     const pokeURL = `https://pokeapi.co/api/v2/pokedex/${id}`;
     const result = await fetch(pokeURL);
     const pokedexData = await result.json();
-    console.log(pokedexData);
+    //current log return array of 151 pokemon (entry_number, pokemon_species)
+    console.log(pokedexData.pokemon_entries);
 }
 //Test getting pokedex for first area "kanto" (Original 150)
 getPokedexe("kanto")
