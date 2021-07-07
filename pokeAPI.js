@@ -19,6 +19,8 @@ async function fetchOriginalPokemon() {
         await getPokemon(index);
     }
 }
+
+
 fetchOriginalPokemon();
 
 /* 
