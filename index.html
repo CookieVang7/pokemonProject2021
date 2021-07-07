@@ -58,6 +58,11 @@
           function cancelBulbasaur() {
             document.getElementById("bulbasaurConfirm").style.display = "none";
           }
+          function statTestFunction(){
+            getSinglePokemonData(1);
+            getSinglePokemonData(2);
+            alert("hello there");
+          }
         </script>
 
         <div class="form-popup" id="ivysaurConfirm">
@@ -419,6 +424,7 @@
         </script>
 
         <script src="pokedex.js"></script>
+        <script src="pokeBattle.js"></script>
         <script>
           function cancel(){
             //document.getElementsByClassName("confirm-container")[0].style.display = "none";
