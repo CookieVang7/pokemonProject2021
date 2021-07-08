@@ -28,7 +28,7 @@ Fetch data in JSON format from pokeapi.co about
 a pokedex using either an numeric id or
 string that is a valid pokemon location
 */
-async function getPokedexe(id) {
+async function getPokedex(id) {
     const pokeURL = `https://pokeapi.co/api/v2/pokedex/${id}`;
     const result = await fetch(pokeURL);
     const pokedexData = await result.json();
@@ -46,9 +46,9 @@ const pokeCardContainer = document.getElementById('pokeCardContainer');
 */
 function createPokemonCard(pokemon) {
     //An element to add cards to
-    const pokemonElemenmt = document.createElement('div');
+    const pokemonElement = document.createElement('div');
     //Add a class to the div for css
-    pokemonElemenmt.classList.add('pokemonCard');
+    pokemonElement.classList.add('pokemonCard');
 
     //Variables for card data
     const pokeName = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
