@@ -12,15 +12,19 @@ async function getSinglePokemonData(id){
 
     //pokeStats is an array with 6 elements: hp, attack, defense, special attack, special defense, and speed
 
-    getPokemonHP(pokeStats);
-    getPokemonAttack(pokeStats);
-    getPokemonDefense(pokeStats);
-    getPokemonSpeed(pokeStats);
+    const pokHP = getPokemonHP(pokeStats);
+    const pokAttack = getPokemonAttack(pokeStats);
+    const pokDefense = getPokemonDefense(pokeStats);
+    const pokSpeed = getPokemonSpeed(pokeStats);
+
+    console.log(pokAttack,pokDefense,pokHP,pokSpeed);
+    //return pokHP,pokAttack,pokDefense,pokSpeed;
 }
 
 function getPokemonHP(pokeStats){
     const hp = pokeStats[0].base_stat; 
-    console.log(hp);
+    return hp;
+    //console.log(hp);
 }
 
 function getPokemonAttack(pokeStats){
@@ -28,7 +32,8 @@ function getPokemonAttack(pokeStats){
     const specAttack = pokeStats[3].base_stat;
     const finalAttack = (attack + specAttack)/2;
     const attackCeiling = Math.ceil(finalAttack);
-    console.log(attackCeiling);
+    return attackCeiling;
+    //console.log(attackCeiling);
 }
 
 function getPokemonDefense(pokeStats){
@@ -36,10 +41,20 @@ function getPokemonDefense(pokeStats){
     const specDefense = pokeStats[4].base_stat;
     const finalDefense = (defense + specDefense)/2;
     const defenseCeiling = Math.ceil(finalDefense);
-    console.log(defenseCeiling);
+    return defenseCeiling;
+    //console.log(defenseCeiling);
 }
 
 function getPokemonSpeed(pokeStats){
     const speed = pokeStats[5].base_stat; 
-    console.log(speed);
+    return speed;
+    //console.log(speed);
+}
+
+/*
+Function used for damage calculation. The formula is lifted from RhyQuinn on : https://www.youtube.com/watch?v=OMA7hY48jG8
+*/
+
+async function damageCalculator(userPokemonId, cpuPokemonId){
+
 }

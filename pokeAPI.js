@@ -67,7 +67,7 @@ function createPokemonCard(pokemon) {
 
     `;
 
-    pokemonElemenmt.innerHTML = pokeInnerHTML
-    pokeCardContainer.appendChild(pokemonElemenmt)
+    pokemonElement.innerHTML = pokeInnerHTML
+    pokeCardContainer.appendChild(pokemonElement)
 }
 //createPokemonCard();
