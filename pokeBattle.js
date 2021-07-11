@@ -17,11 +17,11 @@ async function getSinglePokemonData(id){
     const pokSpeed = getPokemonSpeed(pokeStats);
 
     return { //returning multiple values
-        one: pokName,
-        two: pokHP,
-        three: pokAttack,
-        four: pokDefense,
-        five: pokSpeed
+        name: pokName,
+        hp: pokHP,
+        attack: pokAttack,
+        defense: pokDefense,
+        speed: pokSpeed
     }
 }
 
@@ -67,8 +67,8 @@ async function getTypesOfPokemon(id){
     }
 
     return { 
-        one: type1,
-        two: type2
+        firstType: type1,
+        secondType: type2
     }
 }
 
@@ -81,16 +81,16 @@ async function getMove(id){ //gets a move's name, type, power and accuracy
     const result = await fetch(moveURL);
     const moveData = await result.json();
 
-    const name = moveData.name[0].toUpperCase() + moveData.name.slice(1);
-    const power = moveData.power;
-    const accuracy = moveData.accuracy;
+    const moveName = moveData.name[0].toUpperCase() + moveData.name.slice(1);
+    const movePower = moveData.power;
+    const moveAccuracy = moveData.accuracy;
     const moveType = moveData.type.name;
     
     return { 
-        one: name,
-        two: moveType,
-        three: power,
-        four: accuracy
+        name: moveName,
+        power: movePower,
+        accuracy: moveAccuracy,
+        type: moveType
     }
 }
 
@@ -99,14 +99,14 @@ Function that gets the type number factor to use in the modifier. Takes in the t
 type(s) of the defending pokemon. The possible vallue are 0 (no damage), .25 (four times resistance), .5 (two times resistance), 1 (neutral/normal),
 2 (double super effective), 4 (quad super effective)
 */
-async function getTypeNumber(moveId,defenderId){
-    const typeURL = `https://pokeapi.co/api/v2/type/${moveId}`; //ex: ground = 5
+async function getTypeFactor(typeId,defenderId){
+    const typeURL = `https://pokeapi.co/api/v2/type/${typeId}`; //ex: ground = 5
     const result = await fetch(typeURL);
     const typeData = await result.json(); 
 
     const defenderTypes = getTypesOfPokemon(defenderId); //types of the defending pokemon
-    const type1 = (await defenderTypes).one;
-    const type2 = (await defenderTypes).two;
+    const type1 = (await defenderTypes).firstType;
+    const type2 = (await defenderTypes).secondType;
 
     let typeNumber = 1; //the default type number of 1 meaning there is a neutral/normal amount of damage. A water move against a fire pokemon would be double damage (2)
 
@@ -122,12 +122,12 @@ async function getTypeNumber(moveId,defenderId){
         }
     })
 
-    typeData.damage_relations.double_damage_to.forEach(moveType => { 
+    typeData.damage_relations.double_damage_to.forEach(moveType => { //when a super effective move happens
         if (moveType.name == type1 || moveType.name == type2){
             typeNumber = typeNumber*2;
         }
     })
-    
+
     return typeNumber;
 }
 
@@ -135,56 +135,71 @@ async function getTypeNumber(moveId,defenderId){
 Modifier variable = STAB*Type*Critical*Random
 */
 async function getModifierNumber(attackerId, defenderId, moveId){
-    const attackerPokemonStats = getSinglePokemonData(attackerId); //returned as [name,hp,attack,defense,speed]
-    let attackNum = attackerPokemonStats[2];
-    let attackerHP = attackerPokemonStats[1];
-    const attackerTypes = getTypesOfPokemon(attackerId); //returned as [type1,type2]
-    
-    
-    const defenderPokemonStats = getSinglePokemonData(defenderId); 
-    let defenseNum = defenderPokemonStats[3];
-    let defenderHP = defenderPokemonStats[1];
-    const defenderTypes = getTypesOfPokemon(defenderId);
+    const attackerTypes = getTypesOfPokemon(attackerId);
 
     let moveUsed = getMove(moveId);
 
     let STAB = 1;
-    if ((await moveUsed).two == (await attackerTypes).one || (await moveUsed).two == (await attackerTypes).two){
+    if ((await moveUsed).type == (await attackerTypes).firstType || (await moveUsed).type == (await attackerTypes).secondType){
         STAB = 1.5;
     }
 
-    let typeNumber = getTypeNumber(moveId,defenderId);
+    let typeNumber = getTypeFactor((await moveUsed).type,defenderId);
 
-    //TO DO: 
-    //-finish critical chance and random (high/low roll) numbers and complete formula
-    
+    let critChance = 1;
+    if (Math.random() <= .1){
+        critChance = 1.5;
+    }
+
+    let randomRollFactor = (Math.random()*(1-.85))+.85; //returns a number between .85 and 1, the same attack doesn't always do the same damage (the term is a high or low roll)
+
+    let modifier = STAB*(await typeNumber).valueOf()*critChance*randomRollFactor;
+
+    return modifier;
 }
 
 /*
 Function used for damage calculation. The formula is lifted from RhyQuinn on : https://www.youtube.com/watch?v=OMA7hY48jG8
 Assumptions:
 -all pokemon are the same level of 35 (for now)
+-crit chance is 10%
+-the modifier number is STAB*Type*Critical*Random
+-random is the chance of a low or high roll (.85 to 1)
 */
 async function damageCalculator(attackerId, defenderId, moveId){
-    const attackerPokemonStats = getSinglePokemonData(attackerId); //returned as [name,hp,attack,defense,speed]
-    let attackNum = attackerPokemonStats[2];
-    let attackerHP = attackerPokemonStats[1];
-    const attackerTypes = getTypesOfPokemon(attackerId); //returned as [type1,type2]
-    
+    const attackerPokemonStats = getSinglePokemonData(attackerId); 
+    let attackNum = (await attackerPokemonStats).attack;
+    console.log(attackNum); 
     
     const defenderPokemonStats = getSinglePokemonData(defenderId); 
-    let defenseNum = defenderPokemonStats[3];
-    let defenderHP = defenderPokemonStats[1];
-    const defenderTypes = getTypesOfPokemon(defenderId);
+    let defenseNum = (await defenderPokemonStats).defense;
+    let defenderHP = (await defenderPokemonStats).hp;
+    console.log(defenderHP);
 
-    let moveUsed = getMove(moveId); //returned as [name,moveType,power,accuracy]
+    let moveUsed = getMove(moveId); 
+    console.log((await moveUsed).name,(await moveUsed).power);
 
-    let damage = ((2*35+10)/250)*(attackNum/defenseNum)*(moveUsed[2]+2);
+    let modifier = getModifierNumber(attackerId,defenderId,moveId);
+    console.log(modifier);
+
+    let damage = (((2*35+10)/250)*(attackNum/defenseNum)*((await moveUsed).power+2)) * (await modifier).valueOf();
+    console.log(damage);
+    let finalDamage = Math.ceil(damage);
+    console.log(finalDamage);
+
+    let newDefenderHP = defenderHP - finalDamage;
+
+    if (defenderHP <= 0){
+        alert((await attackerPokemonStats).name + " has knocked out " + (await defenderPokemonStats).name + "!");
+    }
+    else {
+        alert((await defenderPokemonStats).name + "'s HP has dropped from " + defenderHP + " to " + newDefenderHP);
+    }
 }
 
 async function pokemonThatGoesFirst(userPokemonId, cpuPokemonId){ //determines which pokemon is faster
-    const userPokemonSpeed = getSinglePokemonData(userPokemonId)[4];
-    const cpuPokemonSpeed = getSinglePokemonData(cpuPokemonId)[4];
+    const userPokemonSpeed = (await getSinglePokemonData(userPokemonId)).speed;
+    const cpuPokemonSpeed = (await getSinglePokemonData(cpuPokemonId)).speed;
 
     if (userPokemonSpeed >= cpuPokemonSpeed){
         damageCalculator(userPokemonId,cpuPokemonId);
@@ -193,4 +208,8 @@ async function pokemonThatGoesFirst(userPokemonId, cpuPokemonId){ //determines w
     else {
         damageCalculator(cpuPokemonId,userPokemonId);
     }
+}
+
+async function battleSimulator(userPokemonId,cpuPokemonId){
+    //
 }
