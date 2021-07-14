@@ -126,7 +126,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     max-width: 1200;
 }
 .pokemonCard {
-    background-color: #eee;
+    background-color: rgb(238, 238, 238);
     border-radius: 20px;
     box-shadow: 0 3px 15px rgb(100, 100, 100, 0.5);
     padding: 20px;
@@ -134,7 +134,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     text-align: center;
 }
 .pokemonCard .img-container {
-    background-color: rgb(255, 255, 255, 0.6);
+    background-color: rgba(48, 60, 161, 0.6);
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -148,16 +148,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .pokemonCard .info {
     margin-top: 20px;
 }
-.pokemonCard .number {
-    background-color: #fff;
-    border-radius: 50%;
-    padding: 5px 5px;
-}
 
 .pokemonCard .name {
     margin: 15px 7px;
     letter-spacing: 1px;
-
 }
 
 .pokeball{

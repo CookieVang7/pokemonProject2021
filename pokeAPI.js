@@ -57,17 +57,13 @@ function createPokemonCard(pokemon) {
     const pokeInnerHTML = `
     <div class="info">
         <h3 class="name">${pokeName}</h3>
-        <span class="number"> ${pokemon.id} </span>
     </div>
 
     <div class="img-container">
         <img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png">
     </div>
-
-
     `;
 
     pokemonElement.innerHTML = pokeInnerHTML
     pokeCardContainer.appendChild(pokemonElement)
 }
-//createPokemonCard();
