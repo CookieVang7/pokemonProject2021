@@ -1,28 +1,3 @@
-const originalPokemonLastIndex = 151
-/* 
-Fetch data in JSON format from pokeapi.co about a 
-pokemon using either an numeric id or
-string that is a valid pokemon name and 
-displays card
-*/
-async function getPokemon(id) {
-    const pokeURL = `https://pokeapi.co/api/v2/pokemon/${id}`;
-    const result = await fetch(pokeURL);
-    const pokemonData = await result.json();
-    //console.log(pokemonData);
-    createPokemonCard(pokemonData);
-}
-
-// Fetches the original 151 pokemon (with happen to be 1:151)
-async function fetchOriginalPokemon() {
-    for (let index = 1; index <= originalPokemonLastIndex; index++) {
-        await getPokemon(index);
-    }
-}
-
-
-fetchOriginalPokemon();
-
 /* 
 Fetch data in JSON format from pokeapi.co about 
 a pokedex using either an numeric id or
@@ -43,31 +18,62 @@ async function getPokedex(id) {
 const pokeCardContainer = document.getElementById('pokeCardContainer');
 
 /* Creates an html div for on each call that displays a pokemon
-*/
-function createPokemonCard(pokemon) {
-    //An element to add cards to
-    const pokemonElement = document.createElement('div');
-    //Add a class to the div for css
-    pokemonElement.classList.add('pokemonCard');
+ */
+function createPokemonCard(pokemonArray) {
+    pokemonArray.forEach(element => {
+        //An element to add cards to
+        const pokemonElement = document.createElement('div');
+        //Add a class to the div for css
+        pokemonElement.classList.add('pokemonCard');
 
-    //Variables for card data
-    const pokeName = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-    //const pokeTypes = pokemon.types.map(typeData => typeData.type.name)
-    //Inner HTML for each Pokemon card
-    const pokeInnerHTML = `
-    <div class="info">
+        //Variables for card data
+        const pokeName = element.name[0].toUpperCase() + element.name.slice(1);
+        //const pokeTypes = pokemon.types.map(typeData => typeData.type.name)
+        //Inner HTML for each Pokemon card
+        const pokeInnerHTML = `
+        <div class="info">
         <h3 class="name">${pokeName}</h3>
-        <span class="number"> ${pokemon.id} </span>
-    </div>
+        <span class="number"> ${element.id} </span>
+        </div>
+        
+        <div class="img-container">
+        <img src="https://pokeres.bastionbot.org/images/pokemon/${element.id}.png">
+        </div>
+        
+        
+        `;
 
-    <div class="img-container">
-        <img src="https://pokeres.bastionbot.org/images/pokemon/${pokemon.id}.png">
-    </div>
+        pokemonElement.innerHTML = pokeInnerHTML
+        pokeCardContainer.appendChild(pokemonElement)
 
-
-    `;
-
-    pokemonElement.innerHTML = pokeInnerHTML
-    pokeCardContainer.appendChild(pokemonElement)
+    });
 }
-//createPokemonCard();
+
+const originalPokemonLastIndex = 151
+    /* 
+    Fetch data for 150 original pokemon from pokeapi.co
+    @return An array of pokemon objects
+    */
+function fetchPokemon() {
+    const arrayOfRequests = [];
+    for (let index = 1; index <= originalPokemonLastIndex; index++) {
+        const pokeURL = `https://pokeapi.co/api/v2/pokemon/${index}`;
+        //Push URLs to array, then fetch API request, Then convert request to JSON
+        arrayOfRequests.push(fetch(pokeURL).then(request => request.json()));
+    }
+    //Wait for all requests to finish in parallel
+    Promise.all(arrayOfRequests).then(results => {
+        //console.log(results);
+        //Create pokemon object with data from results
+        const pokemon = results.map(data => ({
+            name: data.name,
+            id: data.id,
+            image: data.sprites["front_default"], //Image selected from collection
+            type: data.types.map(type => type.type.name).join(", "),
+        }));
+        console.log(pokemon);
+        //createPokemonCard(pokemon);
+        createPokemonCard(pokemon);
+    });
+}
+fetchPokemon();
