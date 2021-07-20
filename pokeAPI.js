@@ -46,7 +46,7 @@ const pokeCardContainer = document.getElementById('pokeCardContainer');
 */
 function createPokemonCard(pokemon) {
     //An element to add cards to
-    const pokemonElement = document.createElement('div');
+    const pokemonElement = document.createElement('button');
     //Add a class to the div for css
     pokemonElement.classList.add('pokemonCard');
 
