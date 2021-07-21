@@ -75,6 +75,7 @@ function fetchPokemon() {
             specialAttack: data.stats[3].base_stat,
             defense: data.stats[2].base_stat,
             specialDefense: data.stats[4].base_stat,
+            speed: data.stats[5].base_stat,
             moves: data.moves
         }));
         console.log(pokemon);
