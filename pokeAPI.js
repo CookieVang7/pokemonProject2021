@@ -37,7 +37,7 @@ function createPokemonCard(pokemonArray) {
         </div>
         
         <div class="img-container">
-        <img src="https://pokeres.bastionbot.org/images/pokemon/${element.id}.png">
+        <img src="${element.image}">
         </div>
         
         
@@ -68,7 +68,7 @@ function fetchPokemon() {
         const pokemon = results.map(data => ({
             name: data.name,
             id: data.id,
-            image: data.sprites["front_default"], //Image selected from collection
+            image: `https://pokeres.bastionbot.org/images/pokemon/${data.id}.png`, //Higher quality image from pokeres.bastionbot.org
             type: data.types.map(type => type.type.name).join(", "),
             hp: data.stats[0].base_stat,
             attack: data.stats[1].base_stat,
