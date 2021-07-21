@@ -70,6 +70,12 @@ function fetchPokemon() {
             id: data.id,
             image: data.sprites["front_default"], //Image selected from collection
             type: data.types.map(type => type.type.name).join(", "),
+            hp: data.stats[0].base_stat,
+            attack: data.stats[1].base_stat,
+            specialAttack: data.stats[3].base_stat,
+            defense: data.stats[2].base_stat,
+            specialDefense: data.stats[4].base_stat,
+            moves: data.moves
         }));
         console.log(pokemon);
         //createPokemonCard(pokemon);
