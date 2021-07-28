@@ -11,10 +11,11 @@ async function getSinglePokemonData(id){
     const pokeStats = await pokeData.stats; //returned as [hp,attack,defense,special attack,special defense,speed]
 
     const pokName = pokeData.name[0].toUpperCase() + pokeData.name.slice(1);
-    const pokHP = getPokemonHP(pokeStats);
-    const pokAttack = getPokemonAttack(pokeStats);
-    const pokDefense = getPokemonDefense(pokeStats);
-    const pokSpeed = getPokemonSpeed(pokeStats);
+    let pokHP = getPokemonHP(pokeStats);
+    let pokAttack = getPokemonAttack(pokeStats);
+    let pokDefense = getPokemonDefense(pokeStats);
+    let pokSpeed = getPokemonSpeed(pokeStats);
+
 
     return { //returning multiple values
         name: pokName,
@@ -85,12 +86,14 @@ async function getMove(id){ //gets a move's name, type, power and accuracy
     const movePower = moveData.power;
     const moveAccuracy = moveData.accuracy;
     const moveType = moveData.type.name;
+    const damageClass = moveData.damage_class.name;
     
     return { 
         name: moveName,
         power: movePower,
         accuracy: moveAccuracy,
-        type: moveType
+        type: moveType,
+        class: damageClass
     }
 }
 
@@ -142,17 +145,17 @@ async function getModifierNumber(attackerId, defenderId, moveId){
     let STAB = 1;
     if ((await moveUsed).type == (await attackerTypes).firstType || (await moveUsed).type == (await attackerTypes).secondType){
         STAB = 1.5;
+        console.log("Stabby stabby");
     }
-
-    let typeNumber = getTypeFactor((await moveUsed).type,defenderId);
 
     let critChance = 1;
     if (Math.random() <= .1){
         critChance = 1.5;
+        console.log("It's a crit!");
     }
 
     let randomRollFactor = (Math.random()*(1-.85))+.85; //returns a number between .85 and 1, the same attack doesn't always do the same damage (the term is a high or low roll)
-
+    let typeNumber = getTypeFactor((await moveUsed).type,defenderId);
     let modifier = STAB*(await typeNumber).valueOf()*critChance*randomRollFactor;
 
     return modifier;
@@ -165,39 +168,64 @@ Assumptions:
 -crit chance is 10%
 -the modifier number is STAB*Type*Critical*Random
 -random is the chance of a low or high roll (.85 to 1)
+-For now, all moves have a damage and accuracy assigned to them (status inflicting and stat altering moves)
+-For now, we don't account for effects (like burn, paralyze, etc) 
 */
 async function damageCalculator(attackerId, defenderId, moveId){
     const attackerPokemonStats = getSinglePokemonData(attackerId); 
+    console.log(attackerPokemonStats);
     let attackNum = (await attackerPokemonStats).attack;
-    console.log(attackNum); 
     
     const defenderPokemonStats = getSinglePokemonData(defenderId); 
+    console.log(defenderPokemonStats);
     let defenseNum = (await defenderPokemonStats).defense;
     let defenderHP = (await defenderPokemonStats).hp;
-    console.log(defenderHP);
 
     let moveUsed = getMove(moveId); 
-    console.log((await moveUsed).name,(await moveUsed).power);
+    console.log((await moveUsed).name);
+    let movePower = (await moveUsed).power;
+    
+    //if a move affects stats inflicting move, for now it will have a power of either 20, 30, 40, or 50
+    //lifted from https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
+    if (movePower == null){ 
+        let statusPowerArray = [20,30,40,50];
+        const random = Math.floor(Math.random() * statusPowerArray.length);
+        movePower = statusPowerArray[random];
+    }
 
     let modifier = getModifierNumber(attackerId,defenderId,moveId);
-    console.log(modifier);
-
     let damage = (((2*35+10)/250)*(attackNum/defenseNum)*((await moveUsed).power+2)) * (await modifier).valueOf();
-    console.log(damage);
     let finalDamage = Math.ceil(damage);
-    console.log(finalDamage);
 
-    let newDefenderHP = defenderHP - finalDamage;
-
-    if (defenderHP <= 0){
-        alert((await attackerPokemonStats).name + " has knocked out " + (await defenderPokemonStats).name + "!");
+    //if a move has no accuracy, give it an accuracy of either 80, 90, or 100
+    if ((await moveUsed).accuracy == null){
+        let statusAccuracyArray = [80,90,100];
+        const random = Math.floor(Math.random() * statusAccuracyArray.length);
+        (await moveUsed).accuracy = statusAccuracyArray[random];
     }
+
+    //accounting for if a move will hit based on its accuracy rating
+    let moveAccuracy = (await moveUsed).accuracy/100; 
+    if (Math.random() <= moveAccuracy){
+        let finalDefenderHP = defenderHP - finalDamage;
+
+        if (finalDefenderHP <= 0){
+            alert((await attackerPokemonStats).name + " has knocked out " + (await defenderPokemonStats).name + "!");
+        }
+        else {
+            alert((await defenderPokemonStats).name + "'s HP has dropped from " + defenderHP + " to " + finalDefenderHP);
+        }
+    }
+    
     else {
-        alert((await defenderPokemonStats).name + "'s HP has dropped from " + defenderHP + " to " + newDefenderHP);
+        alert((await attackerPokemonStats).name + "'s attack missed!");
     }
 }
 
-async function pokemonThatGoesFirst(userPokemonId, cpuPokemonId){ //determines which pokemon is faster
+/*
+Determines which pokemon is faster based on their speed attribute and attacks first
+*/
+async function pokemonThatGoesFirst(userPokemonId, cpuPokemonId){ 
     const userPokemonSpeed = (await getSinglePokemonData(userPokemonId)).speed;
     const cpuPokemonSpeed = (await getSinglePokemonData(cpuPokemonId)).speed;
 
@@ -213,3 +241,13 @@ async function pokemonThatGoesFirst(userPokemonId, cpuPokemonId){ //determines w
 async function battleSimulator(userPokemonId,cpuPokemonId){
     //
 }
+
+//using jquery cdn to implement a popup for the battle sim
+// More info on jquery cdn: https://www.yogihosting.com/jquery-cdn/
+//lifted from https://www.youtube.com/watch?v=byYKGWIXMGU
+$(document).ready(function(){
+    $("#battle").click(function(){
+        $("#popup").show();
+    })  
+})
+

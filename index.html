@@ -9,6 +9,11 @@
     <meta charset="utf-8" /> 
     <!--The "title" tag is the name of the page-->
     <title>PokemonSummerProject</title>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous">
+    </script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="style.css">
     </head>
@@ -27,7 +32,11 @@
             <label for="rival-name"><b>Rival's name:</b></label>
             <input type="text" id="rival" />
 
-            <button onclick="damageCalculator(3,6,75)">TEST</button>
+            <button onclick="damageCalculator(6,1,70)">TEST</button>
+            <button id="battle">Battle!</button>
+            <div id="popup">
+              <h2>Time to battle!</h2>
+            </div>
         </div>
 
         <div class="infocard-list infocard-list">
@@ -427,6 +436,7 @@
 
         <script src="pokedex.js"></script>
         <script src="pokeBattle.js"></script>
+        
         <script>
           function cancel(){
             //document.getElementsByClassName("confirm-container")[0].style.display = "none";
